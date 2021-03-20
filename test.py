@@ -1,49 +1,52 @@
 from scipy.spatial import distance
 from database import heatpump_coaches
 import numpy as np
+import json
+
 
 def run(data_input):
     closest_three = match_coach(data_input)
 
-    output = [
-        {
-            'id': heatpump_coaches[closest_three[0]][0],
-            'name': heatpump_coaches[closest_three[0]][1],
-            'email': heatpump_coaches[closest_three[0]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[0]][3],
-                'year': heatpump_coaches[closest_three[0]][4],
-                'cost': heatpump_coaches[closest_three[0]][5]*1000,
-                'stories': heatpump_coaches[closest_three[0]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[0]][7]),
-            }
-        },
-        {
-            'id': heatpump_coaches[closest_three[1]][0],
-            'name': heatpump_coaches[closest_three[1]][1],
-            'email': heatpump_coaches[closest_three[1]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[1]][3],
-                'year': heatpump_coaches[closest_three[1]][4],
-                'cost': heatpump_coaches[closest_three[1]][5]*1000,
-                'stories': heatpump_coaches[closest_three[1]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[1]][7]),
-            }
-        },
-        {
-            'id': heatpump_coaches[closest_three[2]][0],
-            'name': heatpump_coaches[closest_three[2]][1],
-            'email': heatpump_coaches[closest_three[2]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[2]][3],
-                'year': heatpump_coaches[closest_three[2]][4],
-                'cost': heatpump_coaches[closest_three[2]][5]*1000,
-                'stories': heatpump_coaches[closest_three[2]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[2]][7]),
-            }
-        }
-    ]
-    return output
+    output = {
+        'output':
+            [{
+                'id': heatpump_coaches[closest_three[0]][0],
+                'name': heatpump_coaches[closest_three[0]][1],
+                'email': heatpump_coaches[closest_three[0]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[0]][3],
+                    'year': heatpump_coaches[closest_three[0]][4],
+                    'cost': heatpump_coaches[closest_three[0]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[0]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[0]][7]),
+                }
+            },
+            {
+                'id': heatpump_coaches[closest_three[1]][0],
+                'name': heatpump_coaches[closest_three[1]][1],
+                'email': heatpump_coaches[closest_three[1]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[1]][3],
+                    'year': heatpump_coaches[closest_three[1]][4],
+                    'cost': heatpump_coaches[closest_three[1]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[1]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[1]][7]),
+                }
+            },
+            {
+                'id': heatpump_coaches[closest_three[2]][0],
+                'name': heatpump_coaches[closest_three[2]][1],
+                'email': heatpump_coaches[closest_three[2]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[2]][3],
+                    'year': heatpump_coaches[closest_three[2]][4],
+                    'cost': heatpump_coaches[closest_three[2]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[2]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[2]][7]),
+                }
+            }]
+    }
+    return json.dumps(output)
 
 
 def convert(num):
@@ -66,7 +69,7 @@ def match_coach(data_input):
     year = data_input['year']  # high: order of 3, typical = 1960
     cost = data_input['cost']/1000  # low: order of 2, typical = $450,000
     stories = data_input['stories']*1000  # high: order of 3 = 2
-    #location = data_input.location
+    # location = data_input.location
 
     if data_input['houseType'] == 'Town House':
         houseType = 500
@@ -100,5 +103,7 @@ data_input = {
     'cost': 480000,
     'stories': 2,
     'houseType': 'Town House'
+
+
 }
 print(run(data_input))

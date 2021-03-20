@@ -22,7 +22,7 @@ def run():
 
     output = {
         'output':
-            {
+            [{
                 'id': heatpump_coaches[closest_three[0]][0],
                 'name': heatpump_coaches[closest_three[0]][1],
                 'email': heatpump_coaches[closest_three[0]][2],
@@ -57,7 +57,7 @@ def run():
                     'stories': heatpump_coaches[closest_three[2]][6]/1000,
                     'houseType': convert(heatpump_coaches[closest_three[2]][7]),
                 }
-            }
+            }]
     }
     return json.dumps(output)
 
