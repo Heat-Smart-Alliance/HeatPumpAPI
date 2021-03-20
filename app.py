@@ -19,7 +19,7 @@ def run():
     data_input = request.json
     closest_three = match_coach(data_input)
 
-    output = [
+    output = {
         {
             'id': heatpump_coaches[closest_three[0]][0],
             'name': heatpump_coaches[closest_three[0]][1],
@@ -56,7 +56,7 @@ def run():
                 'houseType': convert(heatpump_coaches[closest_three[2]][7]),
             }
         }
-    ]
+    }
     return output
 
 def convert(num):
