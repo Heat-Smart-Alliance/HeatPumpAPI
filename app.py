@@ -59,7 +59,7 @@ def run():
                 }
             }]
     }
-    return json.dumps(output)
+    return jsonify(output)
 
 def convert(num):
     if num == 500:
