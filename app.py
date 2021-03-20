@@ -20,44 +20,45 @@ def run():
     closest_three = match_coach(data_input)
 
     output = {
-        {
-            'id': heatpump_coaches[closest_three[0]][0],
-            'name': heatpump_coaches[closest_three[0]][1],
-            'email': heatpump_coaches[closest_three[0]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[0]][3],
-                'year': heatpump_coaches[closest_three[0]][4],
-                'cost': heatpump_coaches[closest_three[0]][5]*1000,
-                'stories': heatpump_coaches[closest_three[0]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[0]][7]),
+        'output':
+            {
+                'id': heatpump_coaches[closest_three[0]][0],
+                'name': heatpump_coaches[closest_three[0]][1],
+                'email': heatpump_coaches[closest_three[0]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[0]][3],
+                    'year': heatpump_coaches[closest_three[0]][4],
+                    'cost': heatpump_coaches[closest_three[0]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[0]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[0]][7]),
+                }
+            },
+            {
+                'id': heatpump_coaches[closest_three[1]][0],
+                'name': heatpump_coaches[closest_three[1]][1],
+                'email': heatpump_coaches[closest_three[1]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[1]][3],
+                    'year': heatpump_coaches[closest_three[1]][4],
+                    'cost': heatpump_coaches[closest_three[1]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[1]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[1]][7]),
+                }
+            },
+            {
+                'id': heatpump_coaches[closest_three[2]][0],
+                'name': heatpump_coaches[closest_three[2]][1],
+                'email': heatpump_coaches[closest_three[2]][2],
+                'house': {
+                    'size': heatpump_coaches[closest_three[2]][3],
+                    'year': heatpump_coaches[closest_three[2]][4],
+                    'cost': heatpump_coaches[closest_three[2]][5]*1000,
+                    'stories': heatpump_coaches[closest_three[2]][6]/1000,
+                    'houseType': convert(heatpump_coaches[closest_three[2]][7]),
+                }
             }
-        },
-        {
-            'id': heatpump_coaches[closest_three[1]][0],
-            'name': heatpump_coaches[closest_three[1]][1],
-            'email': heatpump_coaches[closest_three[1]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[1]][3],
-                'year': heatpump_coaches[closest_three[1]][4],
-                'cost': heatpump_coaches[closest_three[1]][5]*1000,
-                'stories': heatpump_coaches[closest_three[1]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[1]][7]),
-            }
-        },
-        {
-            'id': heatpump_coaches[closest_three[2]][0],
-            'name': heatpump_coaches[closest_three[2]][1],
-            'email': heatpump_coaches[closest_three[2]][2],
-            'house': {
-                'size': heatpump_coaches[closest_three[2]][3],
-                'year': heatpump_coaches[closest_three[2]][4],
-                'cost': heatpump_coaches[closest_three[2]][5]*1000,
-                'stories': heatpump_coaches[closest_three[2]][6]/1000,
-                'houseType': convert(heatpump_coaches[closest_three[2]][7]),
-            }
-        }
     }
-    return output
+    return json.dumps(output)
 
 def convert(num):
     if num == 500:
