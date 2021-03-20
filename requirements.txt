@@ -2,4 +2,4 @@ Flask==1.1.2
 Flask-SQLAlchemy==2.4.4
 gunicorn==20.0.4
 scipy==1.5.4
-json
+json5==0.9.5
