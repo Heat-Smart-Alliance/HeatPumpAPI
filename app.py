@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect, jsonify
 from scipy.spatial import distance
 from database import heatpump_coaches
 import numpy as np
+import json
 
 app = Flask(__name__)
 
