@@ -65,15 +65,22 @@ def convert(num):
     if num == 500:
         return 'Town House'
     elif num == 1000:
-        return 'Ranch House'
+        return 'Ranch'
     elif num == 1500:
         return 'Victorian'
     elif num == 2000:
-        return 'House Type 4'
+        return 'Cape Cod'
     elif num == 2500:
-        return 'House Type 5'
+        return 'Farm'
     elif num == 3000:
-        return 'House Type 6'
+        return 'Condominium'
+    elif num == 3500:
+        return 'Bungalow'
+    elif num == 4000:
+        return 'Colonial'
+    elif num == 4500:
+        return 'Conventional'
+    
 
 def match_coach(data_input):
     size = data_input['size']  # high: order of 3, typical = 1800
@@ -84,16 +91,22 @@ def match_coach(data_input):
 
     if data_input['houseType'] == 'Town House':
         houseType = 500
-    elif data_input['houseType'] == 'Ranch House':
+    elif data_input['houseType'] == 'Ranch':
         houseType = 1000
     elif data_input['houseType'] == 'Victorian':
         houseType = 1500
-    elif data_input['houseType'] == 'House Type 4':
+    elif data_input['houseType'] == 'Cape Cod':
         houseType = 2000
-    elif data_input['houseType'] == 'House Type 5':
+    elif data_input['houseType'] == 'Farm':
         houseType = 2500
-    elif data_input['houseType'] == 'House Type 6':
+    elif data_input['houseType'] == 'Condominium':
         houseType = 3000
+    elif data_input['houseType'] == 'Bungalow':
+        houseType = 3500
+    elif data_input['houseType'] == 'Colonial':
+        houseType = 4000
+    elif data_input['houseType'] == 'Conventional':
+        houseType = 4500
 
     data = [size, year, cost, stories, houseType]
 
