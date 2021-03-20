@@ -116,7 +116,7 @@ def match_coach(data_input):
     D = distance.squareform(distance.pdist(all_data))
     sorted_closest = np.argsort(D, axis=1)
     k = 3  # For each point, find the 3 closest points
-    closest = sorted_closest[:, 1:k+1]
+    closest = sorted_closest[:, 0:k]
 
     return closest[0]
 
