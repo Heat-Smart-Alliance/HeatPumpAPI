@@ -74,12 +74,12 @@ def convert(num):
         return 'House Type 6'
 
 def match_coach(data_input):
-    size = data_input['size'] #high: order of 3, typical = 1800
-    year = data_input['year'] #high: order of 3, typical = 1960
-    cost = data_input['cost']/1000 #low: order of 2, typical = $450,000
-    stories = data_input['stories']*1000 #high: order of 3 = 2
+    size = data_input['size']  # high: order of 3, typical = 1800
+    year = data_input['year']  # high: order of 3, typical = 1960
+    cost = data_input['cost']/1000  # low: order of 2, typical = $450,000
+    stories = data_input['stories']*1000  # high: order of 3 = 2
     #location = data_input.location
-    
+
     if data_input['houseType'] == 'Town House':
         houseType = 500
     elif data_input['houseType'] == 'Ranch House':
@@ -92,11 +92,13 @@ def match_coach(data_input):
         houseType = 2500
     elif data_input['houseType'] == 'House Type 6':
         houseType = 3000
-    
-    data = [size, year, cost, stories, houseType]
-    heatpump_coaches.insert(0, data)
 
-    D = distance.squareform(distance.pdist(heatpump_coaches))
+    data = [size, year, cost, stories, houseType]
+
+    all_data = [i[3:] for i in heatpump_coaches]
+    all_data.insert(0, data)
+
+    D = distance.squareform(distance.pdist(all_data))
     sorted_closest = np.argsort(D, axis=1)
     k = 3  # For each point, find the 3 closest points
     closest = sorted_closest[:, 1:k+1]
